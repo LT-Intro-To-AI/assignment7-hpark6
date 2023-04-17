@@ -8,14 +8,13 @@ sq_training_data = [
     ([0.1], [0.01]),
     ([.9], [.81])
 ]
-sqn = NeuralNet(1, 20, 1)#(__, num of nodes, __)
+sqn = NeuralNet(1, 20, 1)
 sqn.train(sq_training_data)
 
 print()
 print(sqn.test_with_expected(sq_training_data))
 print(sqn.evaluate([0.66]))
 print(sqn.evaluate([0.95]))
-
 
 or_data = [
     ([0,0],[0]),
@@ -34,7 +33,7 @@ print()
 print("\n\nTraining voter opinion\n\n")
 
 
-voter_opinions = [
+voter_op = [
     ([.9, .6, .8, .3, .1], [1]),
     ([.8, .8, .4, .6, .4], [1]),
     ([.7, .2, .4, .6, .3], [1]),
@@ -44,9 +43,9 @@ voter_opinions = [
 ]
 
 von = NeuralNet(5, 6, 1)
-von.train(voter_opinions)
+von.train(voter_op)
 
-print(von.test_with_expected(voter_opinions))
+print(von.test_with_expected(voter_op))
 
 test_data = [
     [1, 1, 1, .1, .1],
