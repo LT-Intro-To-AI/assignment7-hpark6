@@ -8,7 +8,7 @@ sq_training_data = [
     ([0.1], [0.01]),
     ([.9], [.81])
 ]
-sqn = NeuralNet(1, 20, 1)
+sqn = NeuralNet(1, 1, 1)
 sqn.train(sq_training_data)
 
 print()
@@ -22,16 +22,17 @@ or_data = [
     ([1,0],[1]),
     ([1,1],[1])]
 
-orn = NeuralNet(2, 20, 1)
-orn.train(or_data)
+or_test = NeuralNet(2, 9, 1)
+or_test.train(or_data)
 
 print()
-print(orn.test_with_expected(or_data))
+print(or_test.test_with_expected(or_data))
+
+
 
 
 print()
 print("\n\nTraining voter opinion\n\n")
-
 
 voter_op = [
     ([.9, .6, .8, .3, .1], [1]),
@@ -49,7 +50,14 @@ print(von.test_with_expected(voter_op))
 
 test_data = [
     [1, 1, 1, .1, .1],
-    [.5, .2, .1, .7, .7]
+    [.5, .2, .1, .7, .7],
+    [.8, .3, .3, .3, .8],
+    [.8, .3, .3, .8, .3],
+    [.9, .8, .8, .3, .6]
 ]
-
+print()
 print(f"case 1: {test_data[0]} evaluates to: {von.evaluate(test_data[0])}")
+print(f"case 2: {test_data[1]} evaluates to: {von.evaluate(test_data[1])}")
+print(f"case 3: {test_data[2]} evaluates to: {von.evaluate(test_data[2])}")
+print(f"case 4: {test_data[3]} evaluates to: {von.evaluate(test_data[3])}")
+print(f"case 5: {test_data[4]} evaluates to: {von.evaluate(test_data[4])}")
