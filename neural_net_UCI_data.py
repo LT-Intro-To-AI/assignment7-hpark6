@@ -13,7 +13,7 @@ def parse_line(line: str) -> Tuple[List[float], List[float]]:
     """
     tokens = line.split(",")
     out = int(tokens[0])
-    output = [1 if out == 1 else 0.5 if out == 2 else 1]
+    output = [1 if out == 0 else 0.5 if out == 2 else 1]
 
     inpt = [float(x) for x in tokens[1:]]
     return (inpt, output)
@@ -44,7 +44,7 @@ def normalize(data: List[Tuple[List[float], List[float]]]):
             data[i][0][j] = (data[i][0][j] - leasts[j]) / (mosts[j] - leasts[j])
     return data
 
-
+'''
 with open("wine_data.txt", "r") as f:
     training_data = [parse_line(line) for line in f.readlines() if len(line) > 4]
 
@@ -55,3 +55,14 @@ nn.train(td, iters=100_000, print_interval=1000, learning_rate=0.1)
 
 for i in nn.test_with_expected(td):
     print(f"desired: {i[1]}, actual: {i[2]}")
+'''
+
+with open("forest_fire_data.txt", "r") as f:
+    training_data2 = [parse_line(line) for line in f.readlines() if len(line) > 4]
+
+    td2 = normalize(training_data2)
+    nn2 = NeuralNet(13, 3, 1)
+    nn2.train(td, iters=100_100, print_interval=1000, learning_rate=0.1)
+
+    for i in nn2.test_with_expected(td2):
+        print(f"desired: {i[1]}, actual: {i[2]}")
