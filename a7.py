@@ -32,7 +32,7 @@ print(or_test.test_with_expected(or_data))
 
 
 print()
-print("\n\nTraining voter opinion\n\n")
+print("\n\nTraining forest fire data\n\n")
 
 voter_op = [
     ([.9, .6, .8, .3, .1], [1]),
