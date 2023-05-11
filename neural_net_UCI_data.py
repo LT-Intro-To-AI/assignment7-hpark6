@@ -51,7 +51,7 @@ with open("wine_data.txt", "r") as f:
 td = normalize(training_data)
 
 nn = NeuralNet(13, 3, 1)
-nn.train(td, iters=100_000, print_interval=1000, learning_rate=0.1)
+nn.train(td, iters=3_000, print_interval=1000, learning_rate=0.1)
 
 for i in nn.test_with_expected(td):
     print(f"desired: {i[1]}, actual: {i[2]}")
@@ -62,18 +62,8 @@ with open("forest_fires.txt", "r") as f:
 
     td2 = normalize(training_data2)
     nn2 = NeuralNet(10, 8, 1)
-    nn2.train(td2, iters=100_100, print_interval=1000, learning_rate=0.1)
-
-    print(nn2.test_with_expected(td2))
-
-    test_data = [
-        [4, 7, 89.5, 203.4, 663.1, 8, 25, 43, 3.99, 0], #10 inputs
-        [8, 4, 90.4, 245.6, 559.5, 4, 30, 50, 2.4, 0]
-   
-    ]
-    print()
-    print(f"case 1: {test_data[0]} evaluates to: {nn2.evaluate(test_data[0])}")
-    print(f"case 2: {test_data[1]} evaluates to: {nn2.evaluate(test_data[1])}")
+    nn2.train(td2, iters=3_000, print_interval=1000, learning_rate=0.1)
 
     for i in nn2.test_with_expected(td2):
         print(f"desired: {i[1]}, actual: {i[2]}")
+
